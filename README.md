@@ -7,7 +7,7 @@ import { querySelector } from "@keupoz/strict-queryselector";
 // Gets body element with type of HTMLBodyElement
 const body = querySelector("body", HTMLBodyElement);
 
-// Throws TypeError as body element is instance of HTMLDivElement
+// Throws TypeError as body element is not instance of HTMLDivElement
 const bodyDiv = querySelector("body", HTMLDivElement);
 
 // Throws Error if element doesn't exist
