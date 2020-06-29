@@ -1,0 +1,34 @@
+{
+    "name": "@keupoz/strict-queryselector",
+    "version": "1.0.0",
+    "description": "A simple typeguard wrapper around document.querySelector for TypeScript",
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "tslint -c tslint.json -p . & tsc"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/keupoz/strict-queryselector.git"
+    },
+    "files": [
+        "dist",
+        "LICENSE",
+        "README.md"
+    ],
+    "keywords": [
+        "typescript",
+        "dom",
+        "queryselector",
+        "typeguard"
+    ],
+    "author": "keupoz",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/keupoz/strict-queryselector/issues"
+    },
+    "homepage": "https://github.com/keupoz/strict-queryselector#readme",
+    "devDependencies": {
+        "tslint": "^6.1.2",
+        "typescript": "^3.9.5"
+    }
+}

@@ -1,0 +1,33 @@
+name: "Build and Deploy"
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    name: "Build and release"
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - name: 🛎️ Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: 🔧 Install and Build
+        run: |
+          npm install
+          npm run build
+
+      - name: "🚀 Release to GitHub"
+        uses: "meeDamian/github-release@2.0"
+        with:
+          allow_override: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: "dist/"
+
+      - name: "📦️ Publish to NPM"
+        run: "npm publish"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
