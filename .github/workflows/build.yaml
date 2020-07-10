@@ -24,7 +24,7 @@ jobs:
         uses: "meeDamian/github-release@2.0"
         with:
           allow_override: true
-          name: ${{ format('Release ', github.ref) }}
+          name: ${{ format('Release {0}', github.ref) }}
           body: ""
           token: ${{ secrets.GITHUB_TOKEN }}
           files: "dist/"
