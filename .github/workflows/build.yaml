@@ -27,7 +27,7 @@ jobs:
           name: ${{ format('Release {0}', github.ref) }}
           body: ""
           token: ${{ secrets.GITHUB_TOKEN }}
-          files: "dist/"
+          files: ${{ format('strict-queryselector-{0}:dist/', github.ref) }}
 
       - name: "📦️ Publish to NPM"
         run: "npm publish --access public"
