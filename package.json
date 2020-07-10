@@ -1,6 +1,6 @@
 {
     "name": "@keupoz/strict-queryselector",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "A simple typeguard wrapper around document.querySelector for TypeScript",
     "main": "dist/index.js",
     "scripts": {
