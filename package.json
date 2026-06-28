@@ -25,11 +25,16 @@
     "dist"
   ],
   "scripts": {
-    "build": "eslint . & tsc"
+    "build": "eslint . & tsc",
+    "playground": "vite --open /playground/test.html"
+  },
+  "dependencies": {
+    "typed-query-selector": "^2.12.2"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^9.1.0",
     "eslint": "^10.6.0",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "vite": "^8.1.0"
   }
 }

@@ -1,3 +1,5 @@
+import type { ParseSelector } from 'typed-query-selector/parser'
+
 export interface ElementInterface<T extends Element> {
   prototype: T
   new(): T
@@ -19,27 +21,38 @@ export function assertTypeOfElement<T extends Element>(selector: string, element
 
 /** Wrap the type guard around parent's querySelector method */
 export function wrapQuerySelector(parent: ParentNode) {
-  return <T extends Element>(selector: string, type: ElementInterface<T>): T => {
+  function querySelector<T extends string>(selector: T): ParseSelector<T>
+  function querySelector<T extends Element>(selector: string, type: ElementInterface<T>): T
+  function querySelector(selector: string, type?: ElementInterface<Element>) {
     const element = parent.querySelector(selector)
-
     assertElementFound(selector, element)
-    assertTypeOfElement(selector, element, type)
+    if (type) {
+      assertTypeOfElement(selector, element, type)
+      return element;
+    }
 
     return element
   }
-}
 
+  return querySelector
+}
 /** Wrap the type guard around parent's querySelectorAll method */
 export function wrapQuerySelectorAll(parent: ParentNode) {
-  return <T extends Element>(selector: string, type: ElementInterface<T>): NodeListOf<T> => {
-    const elements = parent.querySelectorAll<T>(selector)
+  function querySelectorAll<T extends string>(selector: T): NodeListOf<ParseSelector<T>>
+  function querySelectorAll<T extends Element>(selector: string, type: ElementInterface<T>): NodeListOf<T>
+  function querySelectorAll(selector: string, type?: ElementInterface<Element>): NodeListOf<Element> {
+    const elements = parent.querySelectorAll(selector)
 
     for (let i = 0; i < elements.length; i++) {
-      assertTypeOfElement(`(${selector})[${i}]`, elements[i], type)
+      if (type) {
+        assertTypeOfElement(`(${selector})[${i}]`, elements[i], type)
+      }
     }
 
     return elements
   }
+
+  return querySelectorAll
 }
 
 /** The type guard wrapped around document's querySelector method */
