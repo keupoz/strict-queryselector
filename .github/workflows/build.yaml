@@ -1,13 +1,13 @@
-name: "Build and Deploy"
+name: Build and Deploy
 on:
   push:
     tags:
-      - "v*"
+      - 'v*'
 
 jobs:
   build:
-    name: "Build and release"
-    runs-on: "ubuntu-latest"
+    name: Build and release
+    runs-on: ubuntu-latest
 
     steps:
       - name: 🛎️ Checkout
@@ -20,15 +20,15 @@ jobs:
           npm install
           npm run build
 
-      - name: "🚀 Release to GitHub"
-        uses: "meeDamian/github-release@2.0"
+      - name: 🚀 Release to GitHub
+        uses: meeDamian/github-release@2.0
         with:
           allow_override: true
-          body: ""
+          body: ''
           token: ${{ secrets.GITHUB_TOKEN }}
-          files: "strict-queryselector:dist/"
+          files: 'strict-queryselector:dist/'
 
-      - name: "📦️ Publish to NPM"
-        run: "npm publish --access public"
+      - name: 📦️ Publish to NPM
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

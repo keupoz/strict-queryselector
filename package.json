@@ -1,34 +1,40 @@
 {
-    "name": "@keupoz/strict-queryselector",
-    "version": "1.1.0",
-    "description": "A simple typeguard wrapper around document.querySelector for TypeScript",
-    "main": "dist/index.js",
-    "scripts": {
-        "build": "tslint -c tslint.json -p . & tsc"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/keupoz/strict-queryselector.git"
-    },
-    "files": [
-        "dist",
-        "LICENSE",
-        "README.md"
-    ],
-    "keywords": [
-        "typescript",
-        "dom",
-        "queryselector",
-        "typeguard"
-    ],
-    "author": "keupoz",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/keupoz/strict-queryselector/issues"
-    },
-    "homepage": "https://github.com/keupoz/strict-queryselector#readme",
-    "devDependencies": {
-        "tslint": "^6.1.2",
-        "typescript": "^3.9.5"
-    }
+  "name": "@keupoz/strict-queryselector",
+  "version": "1.2.0",
+  "description": "A simple typeguard wrapper around document.querySelector for TypeScript",
+  "author": "keupoz",
+  "license": "MIT",
+  "homepage": "https://github.com/keupoz/strict-queryselector#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keupoz/strict-queryselector.git"
+  },
+  "bugs": {
+    "url": "https://github.com/keupoz/strict-queryselector/issues"
+  },
+  "keywords": [
+    "typescript",
+    "dom",
+    "queryselector",
+    "typeguard"
+  ],
+  "main": "dist/index.js",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist"
+  ],
+  "scripts": {
+    "build": "eslint . & tsc",
+    "playground": "vite --open /playground/test.html"
+  },
+  "dependencies": {
+    "typed-query-selector": "^2.12.2"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^9.1.0",
+    "eslint": "^10.6.0",
+    "typescript": "^6.0.3",
+    "vite": "^8.1.0"
+  }
 }
